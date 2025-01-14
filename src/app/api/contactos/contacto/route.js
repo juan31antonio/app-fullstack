@@ -19,16 +19,15 @@ export async function GET(request) {
     }
 }
 
-
 export async function PUT(request) {
     const {searchParams} = new URL(request.url)
     const idBuscado = searchParams.get("id")
-
     const body = await request.json();
-    if(body.nombre && body.apellidos && body.telefonoContacto){
+    
+    if(body.nombre && body.apellidos && body.numero_telefono){
         if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.correo)){
-            if(String(body.telefonoContacto).length == 9){
-                const { data: contacto, error } = await supabase.from("contacto").update([{nombre: body.nombre, apellidos: body.apellidos, correo: body.correo, numero_telefono: body.telefonoContacto, fecha_nacimiento: body.fechaNacimiento}]).eq("id", idBuscado);
+            if(String(body.numero_telefono).length == 9){
+                const { data: contacto, error } = await supabase.from("contacto").update({nombre: body.nombre, apellidos: body.apellidos, correo: body.correo, numero_telefono: body.numero_telefono, fecha_nacimiento: body.fecha_nacimiento}).eq("id", idBuscado);
                 return new Response(
                     JSON.stringify({message: "Usuario actualizado correctamente"}),
                     { headers: { "Content-Type": "application/json" } }
@@ -39,6 +38,6 @@ export async function PUT(request) {
 
     return new Response(
         JSON.stringify({message: "El usuario no se ha podido actualizar"}),
-        { headers: { "Content-Type": "application/json" } }
+        {status:500, headers: { "Content-Type": "application/json" } }
     );
 }

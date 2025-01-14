@@ -16,10 +16,10 @@ export async function GET() {
 export async function POST(request) {
     const body = await request.json();
 
-    if(body.nombre && body.apellidos && body.telefonoContacto){
+    if(body.nombre && body.apellidos && body.numero_telefono){
         if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.correo)){
-            if(String(body.telefonoContacto).length == 9){
-                const { data: contacto, error } = await supabase.from("contacto").insert([{nombre: body.nombre, apellidos: body.apellidos, correo: body.correo, numero_telefono: body.telefonoContacto, fecha_nacimiento: body.fechaNacimiento}]);
+            if(String(body.numero_telefono).length == 9){
+                const { data: contacto, error } = await supabase.from("contacto").insert({nombre: body.nombre, apellidos: body.apellidos, correo: body.correo, numero_telefono: body.numero_telefono, fecha_nacimiento: body.fecha_nacimiento});
                 return new Response(
                     JSON.stringify({message: "Usuario agregado correctamente"}),
                     { headers: { "Content-Type": "application/json" } }
