@@ -65,7 +65,7 @@ export default function User({params}) {
           </p>
         </div>
       :
-      <div>
+      <div> 
         <h3>Usuario: </h3>
         <p><strong>ID:</strong> {usuario.id}</p>
         <p><strong>Nombre:</strong> {usuario.nombre}</p>

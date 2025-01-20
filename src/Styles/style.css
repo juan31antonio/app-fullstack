@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     font-family: "Roboto", serif;
-    background-color:darkseagreen
+    background-color:darkseagreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
     max-width: 800px;
-    position: absolute;
-    top: ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
