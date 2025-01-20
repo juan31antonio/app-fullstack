@@ -30,7 +30,10 @@ export async function POST(request) {
 
     return new Response(
         JSON.stringify({message: "El usuario no se ha podido agregar"}),
-        { headers: { "Content-Type": "application/json" } }
+        { 
+            headers: { "Content-Type": "application/json" },
+            status: 500                                    
+        }
     );
 }
 
