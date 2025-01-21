@@ -39,7 +39,7 @@ export default function AddUser({params}) {
     return (
         <div>
         <h1>Formulario de Registro</h1>
-        <form onSubmit={addUser}>
+        <form onSubmit={addUser} className="form-addUser">
           <label>Nombre:
               <input type="text" name="nombre" onChange={e => onChange(e)} value={usuario.nombre}required/>
           </label><br/>
@@ -55,7 +55,7 @@ export default function AddUser({params}) {
           <label>Fecha de Nacimiento:
               <input type="date" name="fecha_nacimiento" onChange={e => onChange(e)} value={usuario.fecha_nacimiento} required/>
           </label><br/>
-          <button type="submit">Enviar</button>
+          <button type="submit" id="addUser-button">Enviar</button>
         </form>
         <p>
           <Link href={"/Contactos"}><button>Volver Atras</button></Link>

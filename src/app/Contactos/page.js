@@ -42,18 +42,26 @@ export default function Users({params}) {
 
     return (
       <div>
-        <h3>Usuarios: </h3>
-        {
-            <ul>
-            {usuarios.map((usuario) => (
-              <li key={usuario.id}>
-                <Link href={"/Contactos/"+ usuario.id}>{usuario.nombre}</Link> - {usuario.apellidos}<br/>
-                <button onClick={e => deleteUser(usuario.id)}>Eliminar Usuario</button>
-              </li>
-            ))}
-          </ul>
-        }
-        <Link href={"/AddUser"}><h3>Add Usuario</h3></Link>
+        <h3 className="main-element" id="titulo">Usuarios: </h3>
+        <table className="main-element" id="tabla-contactos">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+            <tbody>
+              {usuarios.map((usuario) => (
+                  <tr key={usuario.id}>
+                    <td><Link href={"/Contactos/"+ usuario.id}>{usuario.nombre}</Link></td>
+                    <td>{usuario.apellidos}</td>
+                    <td><button onClick={e => deleteUser(usuario.id)}>Eliminar Usuario</button></td>
+                  </tr>
+              ))}
+            </tbody>
+        </table>
+        <Link href={"/AddUser"}><h3 className="main-element">Add Usuario</h3></Link>
       </div>  
     )
 }
